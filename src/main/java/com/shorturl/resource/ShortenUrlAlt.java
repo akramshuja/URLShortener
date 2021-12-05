@@ -10,7 +10,7 @@ import javax.ws.rs.core.Response;
 
 import com.shorturl.service.URLShortenerService;
 
-@Path("/shortelUrlAlt")
+@Path("/shortenUrlAlt")
 public class ShortenUrlAlt {
 
 	@GET
