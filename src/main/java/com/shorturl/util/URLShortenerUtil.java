@@ -3,7 +3,9 @@ package com.shorturl.util;
 public class URLShortenerUtil {
 
 	public static final String shortUrlDomain = "akr.ly/";
-	public static final String base62 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	
+	// Short url will be built with these 62 characters
+	public static final String urlCharacterSet = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 	private static final int avgRequestPerSecond = 1;
 	private static final int daysShortUrlStored = 30;
@@ -26,5 +28,20 @@ public class URLShortenerUtil {
 			length = length + 1;
 		}
 		return length;
+	}
+	
+	public static String convertToBase62String(long number)
+	{
+		StringBuilder sb = new StringBuilder();
+
+	    while (number != 0) 
+	    {
+	        int remainder = (int)(number % 62);
+			sb.append(urlCharacterSet.charAt(remainder));
+	        number = number/62;
+	    }
+	    String encoded = String.format("%-4s", sb).replace(' ', '0');
+
+	    return new StringBuilder(encoded).reverse().toString();
 	}
 }

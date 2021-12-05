@@ -2,14 +2,14 @@ package com.shorturl.service;
 
 public class Base10Counter {
 
-	long counter = 1;
+	static long counter = 1;
 
-	public long getCounter()
+	public static long getCounter()
 	{
 		return counter;
 	}
 
-	public void increaseCounter()
+	public static void increaseCounter()
 	{
 		counter = counter + 1;
 	}
