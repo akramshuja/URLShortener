@@ -12,12 +12,14 @@ import java.util.List;
 
 public class URLFileResource {
 	
+	private static final String URL_FILE = "urlMap.txt";
+
 	public static List<String> readFromFile() throws IOException
 	{
 		createFileIfNotExists();
 		
 		List<String> lines = Collections.emptyList();
-		lines = Files.readAllLines(Paths.get("urlMap.txt"), StandardCharsets.UTF_8);
+		lines = Files.readAllLines(Paths.get(URL_FILE), StandardCharsets.UTF_8);
 		
 		return lines;
 	    
@@ -27,7 +29,7 @@ public class URLFileResource {
 	{
 		createFileIfNotExists();
 		
-		BufferedWriter out = new BufferedWriter(new FileWriter("urlMap.txt", true));
+		BufferedWriter out = new BufferedWriter(new FileWriter(URL_FILE, true));
         out.write(str);
         out.write("\n");
         out.close();
@@ -35,7 +37,7 @@ public class URLFileResource {
 	
 	private static void createFileIfNotExists() throws IOException {
 		
-		new File("urlMap.txt").createNewFile();
+		new File(URL_FILE).createNewFile();
 	}
 
 }

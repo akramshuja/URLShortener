@@ -40,7 +40,9 @@ public class URLShortenerUtil {
 			sb.append(urlCharacterSet.charAt(remainder));
 	        number = number/62;
 	    }
-	    String encoded = String.format("%-4s", sb).replace(' ', '0');
+	    
+	    // Adding extra 0s to the short url if it doesn't meet minimum length requirement
+	    String encoded = String.format("%-" + String.valueOf(shortURLLength()) + "s", sb).replace(' ', '0');
 
 	    return new StringBuilder(encoded).reverse().toString();
 	}
